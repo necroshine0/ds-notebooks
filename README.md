@@ -1,2 +1,1 @@
-# ds-notebooks
-Repository of Data Science and Kaggle competitions notebooks 
+# Repository of Data Science and Kaggle competitions notebooks 
