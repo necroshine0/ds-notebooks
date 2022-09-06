@@ -6,8 +6,18 @@
 
 ## Models
  * Logistic Regression
- * SVM
  * Random Forest
  * CatBoost
+
+## Processing
+* Feature types defining
+* Distribution analysis
+* NaNs
+* Outliers
+
+## Other
+* Economic impact
+* Feature importance
+
  
- ## Dataset link: [soon](https://www.youtube.com/watch?v=6qzXUjZxvrk)
+## Dataset link: [soon](https://www.youtube.com/watch?v=6qzXUjZxvrk)
