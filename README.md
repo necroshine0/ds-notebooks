@@ -1,2 +1,3 @@
-# ds-notebooks
-Repository of Data Science and Kaggle competitions notebooks 
+# Repository of Data Science and Kaggle competitions
+## Contains
+* Churn prediction (August, 2022)
