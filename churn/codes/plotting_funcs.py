@@ -4,8 +4,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-sns.set(style="darkgrid")
-plt.style.use('bmh')
+from sklearn.metrics import auc, roc_curve
+
+sns.set(style='whitegrid')
+plt.style.use('seaborn-whitegrid')
 plt.rcParams['figure.figsize'] = 9, 4
 
 from codes.iqrs import iqr_segment
@@ -155,6 +157,39 @@ def plot_countplots(df, features: list, figsize=None):
         ax = axes[i // 2][i % 2]
         sns.countplot(data=df, x=feature, hue='churn', ax=ax)
         ax.set_title('{} Countplot'.format(feature))
+    plt.show()
+    
+    
+def draw_ROC(fpr, tpr, title, ax=None):
+    if ax is None:
+        ax = plt.gca()
+        
+    ax.plot(fpr, tpr, color='royalblue', label='roc-curve', linewidth=2)
+    ax.set_ylabel('TPR')
+    ax.set_xlabel('FPR')
+    ax.set_title('{} ROC Curve'.format(title))
+    return ax
+
+
+def plot_curves(models, X, y, figsize=(8, 8)):
+    l = len(models)
+    ncols = l if l <= 3 else round(l / 2)
+    nrows = 1 if l <= 3 else l // 2
+    figsize = (12, 4) if l <= 3 else figsize
+    fig, axes = plt.subplots(nrows=nrows, ncols=ncols, squeeze=False, figsize=figsize)
+    
+    for i, m in enumerate(models):
+        probas = m.predict_proba(X)[:, 1]
+        fpr, tpr, _ = roc_curve(y, probas)
+        
+        ax = axes[i // 2][i % 2] if l > 3 else axes[0][i]
+        draw_ROC(fpr, tpr, m.__class__.__name__, ax=ax)
+        ax.plot([0,1], [0,1], color='lime', linestyle='dashed', linewidth=2)
+        auc_roc = auc(fpr, tpr)
+        ax.text(0.08, 0.9, 'AUC: {:.4f}'.format(auc_roc), transform=ax.transAxes,
+                bbox=dict(boxstyle='square', facecolor='gray', alpha=0.16))
+        
+    fig.tight_layout()
     plt.show()
     
     
