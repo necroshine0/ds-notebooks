@@ -1,0 +1,6 @@
+.ipynb_checkpoints
+codes/__pycache__/
+catboost_info/
+cache_directory/
+data/
+modeling.ipynb
