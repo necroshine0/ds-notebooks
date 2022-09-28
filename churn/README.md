@@ -1,4 +1,6 @@
 # Churn prediction
+Test task from Sber
+
 ## Data
 * (100000, 100) shape
 * no metadata of features
@@ -16,8 +18,9 @@
 * Outliers
 
 ## Other
+* Multicollinearity problem
 * Economic impact
 * Feature importance
 
  
-## Dataset link: [soon](https://www.youtube.com/watch?v=6qzXUjZxvrk)
+## Dataset link: [Kaggle](https://www.kaggle.com/datasets/abhinav89/telecom-customer)
